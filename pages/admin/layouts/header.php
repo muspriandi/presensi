@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="../assets/css/sweetalert2.min.css">
         <link rel="stylesheet" href="../assets/css/custom.css"/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="../assets/css/jquery.dataTables.min.css">
         
     </head>
     <body>

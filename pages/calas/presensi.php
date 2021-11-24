@@ -5,7 +5,7 @@
                 <div class="card-title center">
                     <div class="hr-sect">
                         <h5 class="mt-0 mx-1 blue-text">
-                            Presensi Asisten Lab ICT Terpadu<br>
+                            Presensi Calon Asisten Lab ICT Terpadu<br>
                             <small class="grey-text">Presensi Tanggal <span id="waktuDataPresensi"></span></small>
                         </h5>
                     </div>

@@ -477,8 +477,8 @@ class Presensi {
     function checkIn() {
 
         // QUERY INSERT WAKTU DATANG
-        $query = "INSERT INTO ".$this->table_name." SET tanggal_presensi = :tanggal_presensi, nim = :nim, waktu_datang = :waktu_datang, waktu_pulang = :waktu_pulang";
-                    
+        $query = "INSERT INTO ".$this->table_name." SET tanggal_presensi = :tanggal_presensi, nim = :nim, waktu_datang = :waktu_datang";
+        
         // PREPARE STATEMENT
         $statement = $this->conn->prepare($query);
 
@@ -486,13 +486,11 @@ class Presensi {
         $this->nim              = htmlspecialchars(strip_tags($this->nim));
         $this->tanggal_presensi = date("Y-m-d");
         $this->waktu_datang     = htmlspecialchars(strip_tags($this->waktuPresensi));
-        $this->waktu_pulang     = null;
     
         // MENGUNCI PARAMETER
         $statement->bindParam(':nim', $this->nim);
         $statement->bindParam(':tanggal_presensi', $this->tanggal_presensi);
         $statement->bindParam(':waktu_datang', $this->waktu_datang);
-        $statement->bindParam(':waktu_pulang', $this->waktu_pulang);
     
         // EXECUTE STATEMENT
         if($statement->execute()) {

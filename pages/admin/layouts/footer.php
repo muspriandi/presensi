@@ -12,7 +12,7 @@
         <script src="../assets/js/materialize.min.js"></script>
         <script src="../assets/js/sweetalert2.all.min.js"></script>
         <script src="../assets/js/custom_admin.js"></script>
-        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script src="../assets/js/jquery.dataTables.min.js"></script>
 
     </body>
 </html>

@@ -301,10 +301,13 @@ function retrieveAllAsisten() {
                                 </tr>`;
             }
 
+            $(".dataTables").DataTable().clear().destroy();
+
+
             $("#listDataAsisten").html(tableContent);
 
-            $(".dataTables").DataTable({ 
-                "destroy": true,
+
+            $(".dataTables").DataTable({
                 
                 "language": {
                     "sEmptyTable":   "Tidak ada data yang tersedia pada tabel ini",
