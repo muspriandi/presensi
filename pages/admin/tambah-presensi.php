@@ -14,7 +14,7 @@
                 <form id='presence_form' method="post">
                     <div class="row my-0">
                         <div class="input-field col m10 s12 offset-m1">
-                            <select name="nim" id="cmbAsisten">
+                            <select name="nim" id="cmbAsisten" multiple>
                                 <!-- DIISI MELALUI JAVASCRIPT -->
                             </select>
                             <label>NIM - Nama Asisten</label>

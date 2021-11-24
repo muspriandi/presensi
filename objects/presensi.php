@@ -476,28 +476,63 @@ class Presensi {
 
     function checkIn() {
 
-        // QUERY INSERT WAKTU DATANG
-        $query = "INSERT INTO ".$this->table_name." SET tanggal_presensi = :tanggal_presensi, nim = :nim, waktu_datang = :waktu_datang";
-        
-        // PREPARE STATEMENT
-        $statement = $this->conn->prepare($query);
+        if(is_array($this->nim)) {
+            // MULTIPLE INSERT DATA PRESENSI
 
-        // SANITIZE
-        $this->nim              = htmlspecialchars(strip_tags($this->nim));
-        $this->tanggal_presensi = date("Y-m-d");
-        $this->waktu_datang     = htmlspecialchars(strip_tags($this->waktuPresensi));
-    
-        // MENGUNCI PARAMETER
-        $statement->bindParam(':nim', $this->nim);
-        $statement->bindParam(':tanggal_presensi', $this->tanggal_presensi);
-        $statement->bindParam(':waktu_datang', $this->waktu_datang);
-    
-        // EXECUTE STATEMENT
-        if($statement->execute()) {
-            return true;
+            $success = 0;
+            $count = count($this->nim);
+
+            foreach ($this->nim as $key => $value) {
+                
+                $query = "INSERT INTO ".$this->table_name." SET tanggal_presensi = :tanggal_presensi, nim = :nim, waktu_datang = :waktu_datang";
+                
+                // PREPARE STATEMENT
+                $statement = $this->conn->prepare($query);
+
+                // SANITIZE
+                $this->nim              = htmlspecialchars(strip_tags($value));
+                $this->tanggal_presensi = date("Y-m-d");
+                $this->waktu_datang     = htmlspecialchars(strip_tags($this->waktuPresensi));
+            
+                // MENGUNCI PARAMETER
+                $statement->bindParam(':nim', $this->nim);
+                $statement->bindParam(':tanggal_presensi', $this->tanggal_presensi);
+                $statement->bindParam(':waktu_datang', $this->waktu_datang);
+            
+                // EXECUTE STATEMENT
+                if($statement->execute()) {
+                    $success += 1;
+                }
+            }
+
+            $result = array("success"=>$success, "dataCount"=>$count);
+
+            return $result;
         }
+        else {
+            // SINGLE INSERT DATA PRESENSI
+            $query = "INSERT INTO ".$this->table_name." SET tanggal_presensi = :tanggal_presensi, nim = :nim, waktu_datang = :waktu_datang";
+            
+            // PREPARE STATEMENT
+            $statement = $this->conn->prepare($query);
+
+            // SANITIZE
+            $this->nim              = htmlspecialchars(strip_tags($this->nim));
+            $this->tanggal_presensi = date("Y-m-d");
+            $this->waktu_datang     = htmlspecialchars(strip_tags($this->waktuPresensi));
         
-        return false;
+            // MENGUNCI PARAMETER
+            $statement->bindParam(':nim', $this->nim);
+            $statement->bindParam(':tanggal_presensi', $this->tanggal_presensi);
+            $statement->bindParam(':waktu_datang', $this->waktu_datang);
+        
+            // EXECUTE STATEMENT
+            if($statement->execute()) {
+                return true;
+            }
+            
+            return false;
+        }
     }
 
     // HITUNG JUMLAH PRESENSI HARI INI

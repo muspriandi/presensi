@@ -50,6 +50,6 @@ else {
     http_response_code(400);
  
     // DISPLAY MESSAGE: GAGAL
-    echo json_encode(array("message" => "NIM atau IMEI harus unique."));
+    echo json_encode(array("message" => "NIM dan IMEI harus unique."));
 }
 ?>

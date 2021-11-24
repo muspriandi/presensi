@@ -156,7 +156,7 @@ $(document).ready(function() {
             url         : "proses/retrieve_userAktif.php",
             success     : function(result) {
                 var data = jQuery.parseJSON(result);
-                var cmbContent = "<option value='' disabled selected>Pilih Asisten</option>";
+                var cmbContent = `<option value="" disabled>Pilih Asisten</option>`;
 
                 $.each(data.data, function () {
 
@@ -478,11 +478,11 @@ $(document).on('submit', '#registration_form', function(){
 
             var data = JSON.parse(x.responseText);
             swal ( "Oops..." ,  data.message ,  "error" )
-            .then(function() {
+            // .then(function() {
 
-                $("#registration_form").trigger('reset');
-                M.updateTextFields();
-            });
+            //     $("#registration_form").trigger('reset');
+            //     M.updateTextFields();
+            // });
         }
     });
 
